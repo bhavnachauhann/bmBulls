@@ -85,7 +85,7 @@ const HeroAndTimeline = () => {
               <div
                 key={index}
 ref={(el) => { stepRefs.current[index] = el ?? null }}
-                className="relative flex items-center justify-between md:h-[250px] h-[200px] mb-12"
+                className="relative flex items-start justify-between md:h-[250px] h-[200px] mb-12"
               >
                 {/* Step content */}
                 <div
@@ -112,8 +112,8 @@ ref={(el) => { stepRefs.current[index] = el ?? null }}
 
                 {/* Step number */}
                 <div
-                  className={`absolute left-1/2 -translate-x-1/2 w-14 h-14 flex items-center justify-center font-semibold text-3xl rounded-full transition-colors duration-300 ${
-                    activeStep === index ? 'text-white bg-transparent' : 'text-gray-500'
+                  className={`absolute left-1/2 -translate-x-1/2 w-14 h-14 flex items-center justify-center font-semibold p-2  text-4xl rounded-full transition-colors duration-300 ${
+                    activeStep === index ? 'text-white ' : 'text-gray-500 '
                   }`}
                 >
                   {step.number}
