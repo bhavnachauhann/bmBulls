@@ -1,4 +1,3 @@
-import Image from "next/image";
 import HeroAndTimeline from "./components/HeroAndTimeline";
 import ComparePlans from "./components/ComparePlans";
 import PayOuts from "./components/PayOuts";
