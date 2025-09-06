@@ -40,7 +40,7 @@ const Trade = () => {
   }, [maxOffset]);
 
   return (
-    <section className="py-24 px-6 md:px-12 lg:px-24 relative overflow-hidden bg-black">
+    <section className="py-24 px-6 md:px-12 lg:px-24 relative overflow-hidden bg-black mt-10">
       <div className="max-w-7xl mx-auto relative z-10 flex flex-col items-center gap-12 text-center">
 
         {/* Image with background text */}
@@ -91,7 +91,7 @@ const Trade = () => {
     e.currentTarget.style.setProperty("--shine-x", `-9999px`);
     e.currentTarget.style.setProperty("--shine-y", `-9999px`);
   }}
-  className="relative w-64 h-64 rounded-xl shadow-lg overflow-hidden cursor-pointer"
+  className="relative w-60 h-60 rounded-xl shadow-lg overflow-hidden cursor-pointer"
 >
   {/* Image */}
   <img

@@ -1,8 +1,8 @@
 'use client'
 import React, { useEffect, useState, memo } from 'react'
 import BlurText from './BlurText'
-import Aurora from './Aurora'
 import { GoArrowUpRight } from 'react-icons/go'
+
 // Memoized Counter component to avoid unnecessary re-renders
 const Counter = memo(() => {
   const [count, setCount] = useState(999500)
@@ -16,30 +16,27 @@ const Counter = memo(() => {
 
   return (
     <div className="flex items-center justify-center ">
-  <div className="text-6xl sm:text-8xl md:text-[250px] font-medium mb-4 tracking-tight bg-gradient-to-b from-white to-gray-500 bg-clip-text text-transparent">
-    ${count.toLocaleString()}
-    <span className="ml-1 bg-clip-text text-transparent bg-gradient-to-b from-purple-400 to-gray-400">
-      +
-    </span>
-  </div>
-</div>
-
+      <div className="text-6xl sm:text-8xl md:text-[250px] font-medium mb-4 tracking-tight bg-gradient-to-b from-white to-gray-500 bg-clip-text text-transparent">
+        ${count.toLocaleString()}
+        <span className="ml-1 bg-clip-text text-transparent bg-gradient-to-b from-purple-400 to-gray-400">
+          +
+        </span>
+      </div>
+    </div>
   )
 })
 
-// Set displayName to fix ESLint display-name error
 Counter.displayName = 'Counter'
 
 const PayOuts: React.FC = () => {
   return (
     <section className="relative w-full min-h-screen flex items-center justify-center text-center px-6 py-20 overflow-hidden">
-      {/* Aurora Background */}
+      {/* Image Background instead of Aurora */}
       <div className="absolute inset-0 -z-10 w-full h-full">
-        <Aurora
-          colorStops={['#BA56A3', '#BEBFC1', '#AB43A3']}
-          blend={0.5}
-          amplitude={1.0}
-          speed={0.5}
+        <img
+          src="https://framerusercontent.com/images/xiu7o341eCrF9lStSN049gHLo.png?scale-down-to=2048"
+          alt="Background"
+          className="w-full h-full object-cover"
         />
       </div>
 
@@ -65,10 +62,11 @@ const PayOuts: React.FC = () => {
       {/* Content */}
       <div className="relative z-10 max-w-4xl mx-auto text-white">
         <div className="mb-8">
-           <button className="px-6 py-2 mb-4 rounded-full bg-black border border-white/10  hover:bg-white/10 transition">
-  <span className="bg-gradient-to-r from-[#C7B8E8] from-[20%] to-[#A189D8] bg-clip-text text-transparent text-sm font-medium ">
-Payouts  </span>
-</button>
+          <button className="px-6 py-2 mb-4 rounded-full bg-black border border-white/10 hover:bg-white/10 transition">
+            <span className="bg-gradient-to-r from-[#C7B8E8] from-[20%] to-[#A189D8] bg-clip-text text-transparent text-sm font-medium">
+              Payouts
+            </span>
+          </button>
         </div>
 
         <div className="mb-8">
