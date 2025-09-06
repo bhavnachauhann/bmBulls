@@ -2,27 +2,27 @@
 import React, { useState, useEffect } from 'react';
 import { AiFillApple } from "react-icons/ai";
 import { BiLogoPlayStore } from "react-icons/bi";
-import { useSpring, animated } from "@react-spring/web"; // For hover animation
+import { useSpring, animated, to } from "@react-spring/web";
 
 const Trade = () => {
+
   const services = [
     { 
       name: 'Trade Anytime, Anywhere', 
-      description: 'We create modern, responsive websites that look great on any device.',
       image: 'https://randomqr.com/assets/images/randomqr-256.png',
     },
   ];
 
   const activeService = services[0];
   const [offset, setOffset] = useState(0); // in px
-  const maxOffset = typeof window !== 'undefined' ? window.innerWidth * 0.2 : 0; // 20% of screen width
+  const maxOffset = typeof window !== 'undefined' ? window.innerWidth * 0.1 : 0; // 20% of screen width
 
   // Hover animation for image
-  const [props, set] = useSpring(() => ({
-    scale: 1,
+  const [props, api] = useSpring(() => ({
     rotateX: 0,
     rotateY: 0,
-    config: { mass: 1, tension: 200, friction: 20 },
+    scale: 1,
+    config: { mass: 5, tension: 350, friction: 40 },
   }));
 
   useEffect(() => {
@@ -63,52 +63,81 @@ const Trade = () => {
           </div>
 
           {/* Animated Image */}
-          <animated.img
-            src={activeService.image}
-            alt={activeService.name}
-            className="relative w-full rounded-3xl shadow-2xl object-cover z-10 cursor-pointer"
-            onMouseEnter={() => set({ scale: 1.05, rotateX: 2, rotateY: 2 })}
-            onMouseLeave={() => set({ scale: 1, rotateX: 0, rotateY: 0 })}
-            style={{
-              transform: props.scale.to(
-                (s) =>
-                  `perspective(600px) rotateX(${props.rotateX.get()}deg) rotateY(${props.rotateY.get()}deg) scale(${s})`
-              ),
-            }}
-          />
+      <animated.div
+  style={{
+    transform: to(
+      [props.rotateX, props.rotateY, props.scale],
+      (rx, ry, s) =>
+        `perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg) scale(${s})`
+    ),
+  }}
+  onMouseMove={(e) => {
+    const x = e.clientX - e.currentTarget.getBoundingClientRect().left;
+    const y = e.clientY - e.currentTarget.getBoundingClientRect().top;
+    const width = e.currentTarget.offsetWidth;
+    const height = e.currentTarget.offsetHeight;
+
+    // update tilt
+    const rotateX = (y - height / 2) / 20;
+    const rotateY = (x - width / 2) / 20;
+    api.start({ rotateX, rotateY, scale: 1.1 });
+
+    // update shine position
+    e.currentTarget.style.setProperty("--shine-x", `${x}px`);
+    e.currentTarget.style.setProperty("--shine-y", `${y}px`);
+  }}
+  onMouseLeave={(e) => {
+    api.start({ rotateX: 0, rotateY: 0, scale: 1 });
+    e.currentTarget.style.setProperty("--shine-x", `-9999px`);
+    e.currentTarget.style.setProperty("--shine-y", `-9999px`);
+  }}
+  className="relative w-64 h-64 rounded-xl shadow-lg overflow-hidden cursor-pointer"
+>
+  {/* Image */}
+  <img
+    src="https://randomqr.com/assets/images/randomqr-256.png"
+    alt="Trade Card"
+    className="w-full h-full object-cover border-4 border-gray-300"
+  />
+
+  {/* Shine layer */}
+  <div
+    className="absolute inset-0 pointer-events-none"
+    style={{
+      background: `radial-gradient(circle at var(--shine-x, -9999px) var(--shine-y, -9999px), rgba(255,255,255,0.5), transparent 80%)`,
+    }}
+  />
+</animated.div>
+
+
         </div>
 
-        {/* Description */}
-        <div className="space-y-6 animate-fade-in max-w-2xl">
-          <p className="text-sm md:text-base font-light text-gray-400">
-            {activeService.description}
-          </p>
-        </div>
+        
 
         {/* App Store / Google Play badges */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-16">
+        <div className="flex flex-col sm:flex-col gap-2 justify-center items-center mt-2">
           {/* App Store Badge */}
-          <div className="bg-black rounded-xl p-3 hover:bg-gray-900 transition-colors cursor-pointer">
+          <div className="bg-black rounded-xl p-1 hover:bg-gray-900 transition-colors cursor-pointer">
             <div className="flex items-center gap-3">
               <div className="text-white">
-                <AiFillApple className='text-white text-xl'/>
+                <AiFillApple className='text-white text-2xl'/>
               </div>
               <div className="text-white text-left">
                 <div className="text-xs">Available on the</div>
-                <div className="text-lg font-semibold">App Store</div>
+                <div className="text-lg font-medium">App Store</div>
               </div>
             </div>
           </div>
 
           {/* Google Play Badge */}
-          <div className="bg-black rounded-xl p-3 hover:bg-gray-900 transition-colors cursor-pointer">
+          <div className="bg-black rounded-xl p-1 hover:bg-gray-900 transition-colors cursor-pointer">
             <div className="flex items-center gap-3">
               <div className="text-white">
-                <BiLogoPlayStore className='text-white text-xl' />
-              </div>
+                <BiLogoPlayStore className='text-white text-2xl' />
+                             </div>
               <div className="text-white text-left">
                 <div className="text-xs">GET IT ON</div>
-                <div className="text-lg font-semibold">Google Play</div>
+                <div className="text-lg font-medium">Google Play</div>
               </div>
             </div>
           </div>

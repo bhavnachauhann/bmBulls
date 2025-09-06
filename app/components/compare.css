@@ -10,7 +10,7 @@
     color: #656565;
     background: white;
     border-radius: 15px;
-    width: 230px;
+    width: 220px;
     text-align: center;
     font-weight: 400;
     box-shadow: 0 4px 50px 0 rgb(0 0 0 / 7%);
@@ -61,4 +61,18 @@
     100% {
         transform: rotate(360deg);
     }
+}
+
+
+
+.wave {
+  display: inline-block;
+  transform: translateY(0);
+}
+
+/* Gradient applied to entire "Abcd" word */
+.gradient-text {
+  background: linear-gradient(to right, #A35CA2, #A35CA2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

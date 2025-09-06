@@ -9,9 +9,9 @@
   inset: 0;
   border-radius: 1rem; /* same as rounded-2xl */
   padding: 1px; /* border thickness */
-  background: linear-gradient(90deg, transparent, #a855f7, transparent);
+  background: linear-gradient(90deg, transparent, #917AC5, transparent);
   background-size: 200% 100%;
-  animation: borderMove 3s linear infinite;
+  animation: borderMove 5s linear infinite;
   -webkit-mask: 
     linear-gradient(#fff 0 0) content-box, 
     linear-gradient(#fff 0 0);

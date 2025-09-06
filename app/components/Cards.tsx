@@ -5,11 +5,11 @@ import "./card.css"; // custom CSS
 const Cards = () => {
   return (
     <div className="flex justify-center items-center min-h-screen bg-black px-4 pb-20">
-      <div className="max-w-7xl w-full grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div className="max-w-7xl w-full grid grid-cols-1 md:grid-cols-4 gap-2">
 
         {/* Left column tags */}
         <div className="p-4 flex flex-col  ">
-          <h2 className="text-lg font-bold text-center md:block hidden">Abcd Vintage</h2>
+          <h2 className="text-lg font-bold text-center md:block hidden py-6">Abcd Vintage</h2>
           <p className="text-black text-center mt-1 text-sm md:block hidden">
             Perfect for balanced, all-level traders looking for solid growth.
           </p>
@@ -31,52 +31,59 @@ const Cards = () => {
           </div>
         </div>
 
-        {/* Cards */}
-        {[1, 2, 3].map((card) => (
-          <div
-            key={card}
-            className={`bg-gradient-to-b from-[#1A0A20] to-black text-white rounded-2xl shadow-lg p-4 flex flex-col relative ${
-              card === 2 ? "animated-border" : ""
-            }`}
-          >
-            {/* Card Header */}
-            <h2 className="text-lg font-bold text-center">Abcd Vintage</h2>
-            <p className="text-gray-300 text-center mt-1 text-sm">
-              Perfect for balanced, all-level traders looking for solid growth.
-            </p>
+       {/* Cards */}
+{[1, 2, 3].map((card) => (
+  <div
+    key={card}
+    className={`
+      text-white 
+      rounded-2xl 
+      shadow-lg 
+      p-4 
+      flex flex-col 
+      relative
+      ${card === 2 ? "bg-black animated-border" : "bg-gradient-to-b from-[#1A0A20] to-black"}
+    `}
+  >
+    {/* Card Header */}
+    <h2 className="text-3xl font-medium text-center text-gray-300 py-6">Abcd Vintage</h2>
+    <p className="text-gray-300 text-center mt-1 text-[14px] font-semibold">
+      Perfect for balanced, all-level traders looking for consistency and solid growth.
+    </p>
 
-            {/* Values */}
-            <div className="mt-6 flex flex-col gap-2 text-sm text-center">
-              {[
-                "All-level traders",
-                "$10%",
-                "from 0.2 pips",
-                "No Commission",
-                "1:Unlimited",
-                "0.01",
-                "200 trades during peak hours",
-                "Unlimited",
-                "0%",
-                "30%",
-                "0%",
-                "Moderate",
-                "Forex, Crypto, Stocks, Commodities, Indices",
-              ].map((text, i) => (
-                <p key={i} className="relative pb-3">
-                  {text}
-                  <span className="absolute left-0 bottom-0 w-full h-[2px] bg-gradient-to-r from-transparent via-purple-500 to-transparent opacity-60"></span>
-                </p>
-              ))}
-            </div>
+    {/* Values */}
+    <div className="mt-6 flex flex-col gap-2 text-sm text-center">
+      {[
+        "All-level traders",
+        "$10%",
+        "from 0.2 pips",
+        "No Commission",
+        "1:Unlimited",
+        "0.01",
+        "200 trades during peak hours",
+        "Unlimited",
+        "0%",
+        "30%",
+        "0%",
+        "Moderate",
+        "Forex, Crypto, Stocks, Commodities, Indices",
+      ].map((text, i) => (
+        <p key={i} className="relative pb-3">
+          {text}
+          <span className="absolute left-0 bottom-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#917AC5] to-transparent opacity-60"></span>
+        </p>
+      ))}
+    </div>
 
-            {/* Button */}
-            <div className="mt-6 flex justify-center">
-              <button className="px-4 py-2 rounded-lg bg-gradient-to-r from-purple-400 to-indigo-500 text-white font-medium hover:opacity-90 transition text-sm">
-                Start Trading
-              </button>
-            </div>
-          </div>
-        ))}
+    {/* Button */}
+    <div className="mt-6 flex justify-center">
+      <button className="px-4 py-3 rounded-xl bg-gradient-to-r from-[#7153AF] to-[#917AC5] text-white font-medium hover:opacity-90 transition text-base">
+        Start Trading
+      </button>
+    </div>
+  </div>
+))}
+
       </div>
     </div>
   )

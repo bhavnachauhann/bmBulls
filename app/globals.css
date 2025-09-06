@@ -3,6 +3,8 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* Global font family applied here */
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -122,5 +124,13 @@
     @apply bg-background text-foreground;
     background-color: black;
   }
+  html {
+    font-family: 'Manrope', sans-serif !important;
+}
+}
+.mantope{
+      font-family: 'Manrope', sans-serif !important;
+
+
 }
 

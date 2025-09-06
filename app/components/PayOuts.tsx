@@ -3,10 +3,9 @@ import React, { useEffect, useState, memo } from 'react'
 import BlurText from './BlurText'
 import Aurora from './Aurora'
 import { GoArrowUpRight } from 'react-icons/go'
-
 // Memoized Counter component to avoid unnecessary re-renders
 const Counter = memo(() => {
-  const [count, setCount] = useState(999600)
+  const [count, setCount] = useState(999500)
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -16,12 +15,15 @@ const Counter = memo(() => {
   }, [])
 
   return (
-    <div className="text-6xl sm:text-8xl md:text-9xl font-bold mb-4 tracking-tight bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent">
-      ${count.toLocaleString()}
-      <span className="ml-1 bg-clip-text text-transparent bg-gradient-to-b from-purple-400 to-gray-400">
-        +
-      </span>
-    </div>
+    <div className="flex items-center justify-center ">
+  <div className="text-6xl sm:text-8xl md:text-[250px] font-medium mb-4 tracking-tight bg-gradient-to-b from-white to-gray-500 bg-clip-text text-transparent">
+    ${count.toLocaleString()}
+    <span className="ml-1 bg-clip-text text-transparent bg-gradient-to-b from-purple-400 to-gray-400">
+      +
+    </span>
+  </div>
+</div>
+
   )
 })
 
@@ -63,13 +65,16 @@ const PayOuts: React.FC = () => {
       {/* Content */}
       <div className="relative z-10 max-w-4xl mx-auto text-white">
         <div className="mb-8">
-          <span className="text-sm uppercase tracking-wider text-gray-400">Payouts</span>
+           <button className="px-6 py-2 mb-4 rounded-full bg-black border border-white/10  hover:bg-white/10 transition">
+  <span className="bg-gradient-to-r from-[#C7B8E8] from-[20%] to-[#A189D8] bg-clip-text text-transparent text-sm font-medium ">
+Payouts  </span>
+</button>
         </div>
 
         <div className="mb-8">
           <BlurText
-            text="We've Paid Out Over"
-            delay={100}
+            text="We've  Paid  Out  Over"
+            delay={150}
             animateBy="words"
             direction="top"
             onAnimationComplete={() => console.log('Animation completed!')}
@@ -94,7 +99,7 @@ const PayOuts: React.FC = () => {
 
         <button className="group px-6 py-3 bg-black text-white font-normal rounded-xl transition-all duration-300 flex items-center gap-2 mx-auto animated-border">
           Are you Next?
-          <GoArrowUpRight className="text-xl transform transition-transform duration-300 group-hover:rotate-50" />
+          <GoArrowUpRight className="text-xl transform transition-transform duration-300 group-hover:rotate-40" />
         </button>
       </div>
     </section>
